@@ -36,8 +36,45 @@ function App() {
     <div className="app">
       <div className="container">
         <h1>Todo List</h1>
+        <TodoForm />
       </div>
     </div>
+  )
+}
+
+
+//component for each todo which we render
+function Todo({todo, index, markTodo, removeTodo}) {
+  return (
+    <div className="todo">
+
+    </div>
+  )
+}
+
+//form component
+function TodoForm({addTodo}) {
+  const [value, setValue] = React.useState("");
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    if(!value) return;
+    addTodo(value);
+    setValue("")
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label>
+          <b>Add todo</b>
+        </Form.Label>
+        <Form.Control type="text" value={value} className="input" onChange={event => setValue(event.target.value)} placeholder="Enter new todo" />
+      </Form.Group>
+      <Button type="submit" variant="primary">
+        Submit
+      </Button>
+    </Form>
   )
 }
 
